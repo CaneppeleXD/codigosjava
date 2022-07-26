@@ -1,6 +1,6 @@
 public class nono {
     public static void main(String[] args) {
-        int[] vetor = preencherVetor(5);
+        int[] vetor = preencherVetor(4);
         ordenarVetor(vetor);
         imprimirVetor(vetor);
         System.out.println("Mediana: " + calcularMediana(vetor));
@@ -27,14 +27,14 @@ public class nono {
         }
     }
 
-    public static int calcularMediana(int[] vetor) {
+    public static double calcularMediana(int[] vetor) {
         int noti = vetor.length-1;
         int i = 0;
         while (i < noti) {
             noti--;
             i++;
         }
-        return ((vetor[i] + vetor[noti]) / 2);
+        return ((vetor[i] + vetor[noti]) / 2.0);
     }
 
     public static void imprimirVetor(int[] vetor) {
