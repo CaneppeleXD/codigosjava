@@ -1,8 +1,8 @@
 public class setimo {
     public static void main(String[] args) {
-        int[] vetor = preencherVetor(10);
+        int[] vetor = preencherVetor(10000);
         ordenarVetor(vetor);
-        imprimirVetor(vetor);
+        
     }
 
     public static int[] preencherVetor(int x) {
@@ -14,9 +14,11 @@ public class setimo {
     }
 
     public static void ordenarVetor(int[] vetor) {
+        int contador = 0;
         for (int i = 0; i < vetor.length; i++) {
             for (int x = 0; x < vetor.length - 1; x++) {
                 int aux = 0;
+                contador++;
                 if (vetor[x] > vetor[x+1]) {
                     aux = vetor[x];
                     vetor[x] = vetor[x+1];
@@ -24,6 +26,8 @@ public class setimo {
                 }
             }
         }
+        imprimirVetor(vetor);
+        System.out.println("repeticoes: "+contador);
     }
     public static void imprimirVetor(int[] vetor){
         for (int i = 0; i < vetor.length; i++) {
