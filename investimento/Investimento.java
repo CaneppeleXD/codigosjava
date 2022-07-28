@@ -8,7 +8,7 @@ public class Investimento {
        	}
 	else{
 	
-		System.out.println(calcularJurosMensal(Entrada.leiaDouble("Digite o juros anual"))+"%");
+		System.out.println(calcularJurosMensal(Entrada.leiaDouble("Digite o juros anual"))+"x");
 	}
     }
 
