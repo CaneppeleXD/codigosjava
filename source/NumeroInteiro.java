@@ -38,6 +38,15 @@ public class NumeroInteiro {
         }
         return (divisores);
     }
-    //primo relativo / recever como parametro outro numero inteiro
+    
+    public boolean verificarPrimo(int x) {
+        boolean retorno = true;
+        for (int i = 2; retorno == false && i <= Math.min(valor, x); i++) {
+            if ((valor % i == 0) && (x % i == 0)) {
+                retorno = false;
+            }
+        }
+        return (retorno);
+    }
 
 }
