@@ -72,8 +72,8 @@ public class VetorInteiro {
     }
 
     public void imprimirVetor() {
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.println(vetor[i]);
+        for (int i: vetor) {
+            System.out.println(i);
         }
     }
 
