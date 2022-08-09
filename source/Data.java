@@ -22,7 +22,7 @@ public class Data {
         trocarAno(ano);
     }
     
-    //verificar uma maneira de verificar se o dia naquele mes é possivel, talvez pegar o mes antes do dia, e o ano antes de tudo
+    //verificar uma maneira de verificar se o dia naquele mes é possivel, talvez pegar o mes antes do dia, e o ano antes de tudo ou utilizar um metodo para verifica se a data é correta
     public boolean trocarDia (int dia) {
         boolean retorno = false;
         if(dia > 0 && dia <= 32){
