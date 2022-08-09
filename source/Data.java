@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.univates.source;
+//package br.univates.source;
 
 /**
  *
@@ -16,6 +16,12 @@ public class Data {
     
     private int ano;
     
+    public Data(){
+        trocarDia(1);
+        trocarMes(1);
+        trocarAno(1);
+    }
+
     public Data (int dia, int mes, int ano){
         trocarDia(dia);
         trocarMes(mes);
@@ -62,9 +68,77 @@ public class Data {
         return(ano);
     }
     
-    public boolean ehBissexto (){
+    public boolean ehBissexto (){ //pode ser um metodo static
         boolean retorno = false;
-
+        if(ano % 4 == 0 && ano % 100 != 0){
+            retorno = true;
+        }
+        else if(ano % 400 == 0){
+            retorno = true;
+        }
         return(retorno);
+    }
+
+    public String obterEstacaoDoAno (){ //pode ser um metodo static
+        final Data inicioOutono = new Data(21, 03, ano);
+        final Data inicioInverno = new Data(21, 06, ano);
+        final Data inicioPrimavera = new Data(23, 9, ano);
+        final Data inicioVerao = new Data(21, 12, ano);
+        String estacao = "";
+        if(ehMaiorQue(inicioOutono) && ehMenorQue(inicioInverno)){estacao = "outono";}
+        else if(ehMaiorQue(inicioInverno) && ehMenorQue(inicioPrimavera)){estacao = "inverno";}
+        else if(ehMaiorQue(inicioPrimavera) && ehMenorQue(inicioVerao)){estacao = "primavera";}
+        else{estacao = "verão";}
+        return(estacao);
+    }
+
+    private static Data[] preencherSignos(int ano){
+        Data[] signosData = new Data[12];
+        int[] signosBruto = {2103,2104,2105,2106,2207,2308,2309,2310,2211,2212,2101,2002};
+        for(int i = 0;i<12;i++){
+            signosData[i] = new Data(1,1,ano);
+            signosData[i].trocarMes(signosBruto[i]%100);
+            signosData[i].trocarDia((signosBruto[i]-signosData[i].mes)/100);
+            System.out.println(signosData[i].dia+"/"+signosData[i].mes);
+        }
+        return(signosData);
+    }
+
+    public String obterSigno (){
+        String[] signos = {"Áries","Touro","Gêmeos","Câncer","Leão","Virgem","Libra","Escorpião","Sagitário","Capricórnio","Aquário","Peixes"};
+        Data[] inicioSignos = preencherSignos(ano);
+        boolean flag = false;
+        int i;
+        for(i = 0;i<12 && flag == false;i++){
+            inicioSignos[i].ano = ano;
+            if(i == 11){
+                if(ehMaiorQue(inicioSignos[i]) && ehMenorQue(inicioSignos[1])){flag=true;}
+            }
+            else if(i == 9){
+                if(ehMaiorQue(inicioSignos[i]) || ehMenorQue(inicioSignos[i+1])){flag=true;}
+            }
+            else{
+                if(ehMaiorQue(inicioSignos[i]) && ehMenorQue(inicioSignos[i+1])){flag=true;}
+            }
+        }
+        return(signos[i-1]);
+    }
+
+    public boolean ehMenorQue (Data d){
+        boolean retorno = false;
+        if(ano < d.ano){
+            retorno = true;
+        }
+        else if(ano == d.ano && mes < d.mes){
+            retorno = true;
+        }
+        else if(ano == d.ano && mes == d.mes && dia < d.dia){
+            retorno = true;
+        }
+        return(retorno);
+    }
+
+    public boolean ehMaiorQue (Data d){
+        return(!ehMenorQue(d));
     }
 }
