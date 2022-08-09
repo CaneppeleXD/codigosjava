@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//package br.univates.source;
+package br.univates.source;
 
 /**
  *
@@ -39,10 +39,10 @@ public class NumeroInteiro {
         return (divisores);
     }
     
-    public boolean verificarPrimo(int x) {
+    public boolean verificarPrimo(NumeroInteiro n) {
         boolean retorno = true;
-        for (int i = 2; retorno == false && i <= Math.min(valor, x); i++) {
-            if ((valor % i == 0) && (x % i == 0)) {
+        for (int i = 2; retorno == false && i <= Math.min(valor, n.valor); i++) {
+            if ((valor % i == 0) && (n.valor % i == 0)) {
                 retorno = false;
             }
         }
