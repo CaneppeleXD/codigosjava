@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//package br.univates.source;
+package br.univates.source;
 
 /**
  *
  * @author joao.caneppele
  */
 public class Data {
+
     private int dia;
 
     private int mes;
@@ -17,15 +18,21 @@ public class Data {
     private int ano;
 
     public Data() {
-        trocarDia(1);
-        trocarMes(1);
-        trocarAno(1);
+        dia = 1;
+        mes = 1;
+        ano = 1;
     }
 
     public Data(int dia, int mes, int ano) {
-        trocarDia(dia);
-        trocarMes(mes);
-        trocarAno(ano);
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+        if (!ehCorreta()) {
+            this.dia = 1;
+            this.mes = 1;
+            this.ano = 1;
+        }
+
     }
 
     // verificar uma maneira de verificar se o dia naquele mes é possivel, talvez
@@ -33,7 +40,8 @@ public class Data {
     // verifica se a data é correta
     public boolean trocarDia(int dia) {
         boolean retorno = false;
-        if (dia > 0 && dia <= 32) {
+        Data aux = new Data(dia, mes, ano);
+        if (aux.ehCorreta()) {
             this.dia = dia;
             retorno = true;
         }
@@ -72,12 +80,26 @@ public class Data {
 
     public boolean ehBissexto() { // pode ser um metodo static
         boolean retorno = false;
-        if (ano % 4 == 0 && ano % 100 != 0) {
-            retorno = true;
-        } else if (ano % 400 == 0) {
-            retorno = true;
+        if (ano >= 1582) {
+            if (ano % 4 == 0 && ano % 100 != 0) {
+                retorno = true;
+            } else if (ano % 400 == 0) {
+                retorno = true;
+            }
         }
         return (retorno);
+    }
+
+    public int obterUltimoDiaMes() {
+        int[] dias = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if (ehBissexto()) {
+            dias[1]++;
+        }
+        return (dias[mes - 1]);
+    }
+
+    public boolean ehCorreta() {
+        return ((dia > 0 && dia <= obterUltimoDiaMes()) && (mes > 0 && mes <= 12) && (ano > 0));
     }
 
     public String obterEstacaoDoAno() { // pode ser um metodo static
@@ -98,9 +120,28 @@ public class Data {
         return (estacao);
     }
 
+    public int obterDiaAno() {
+        int retorno = 0;
+        Data aux = new Data(1, 1, ano);
+        for (int i = 0; i < mes - 1; i++) {
+            retorno += aux.obterUltimoDiaMes();
+            aux.mes++;
+        }
+
+        return (retorno + dia);
+
+    }
+
+    public int obterSegundosAno() {
+        return (obterDiaAno() * 24 * 60 * 60);
+    }
+
+    /*public int obterDiferenca(Data d) {
+
+    }*/
     private static Data[] preencherSignos(int ano) {
         Data[] signosData = new Data[12];
-        int[] signosBruto = { 2103, 2104, 2105, 2106, 2207, 2308, 2309, 2310, 2211, 2212, 2101, 2002 };
+        int[] signosBruto = {2103, 2104, 2105, 2106, 2207, 2308, 2309, 2310, 2211, 2212, 2101, 2002};
         for (int i = 0; i < 12; i++) {
             signosData[i] = new Data(1, 1, ano);
             signosData[i].trocarMes(signosBruto[i] % 100);
@@ -111,8 +152,8 @@ public class Data {
     }
 
     public String obterSigno() {
-        String[] signos = { "Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário",
-                "Capricórnio", "Aquário", "Peixes" };
+        String[] signos = {"Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário",
+            "Capricórnio", "Aquário", "Peixes"};
         Data[] inicioSignos = preencherSignos(ano);
         boolean flag = false;
         int i;
@@ -193,8 +234,54 @@ public class Data {
     }
 
     public String obterExtensoMes() {
-        String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
-                "Outubro", "Novembro", "Dezembro" };
+        String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+            "Outubro", "Novembro", "Dezembro"};
         return (meses[mes - 1]);
+    }
+
+    public void avancarDias(int dia) {
+        while (this.dia + dia > obterUltimoDiaMes()) {
+            dia -= obterUltimoDiaMes();
+            mes++;
+            if (mes == 13) {
+                ano++;
+                mes = 1;
+            }
+        }
+        this.dia += dia; //talvez funcione dessa maneira. testar ainda
+    }
+
+    //metodos de retrocder pode influenciar nagativamente na integridade da classe da maneira que está
+    public void retrocederDias(int dia) {
+        while (this.dia - dia <= 0) {
+            mes--;
+            if (mes == 0) {
+                ano--;
+                mes = 12;
+            }
+            dia -= obterUltimoDiaMes();
+        }
+        this.dia -= dia;
+    }
+
+    public int obterDiaDoSeculo() {
+        int diaDoSeculo = (ano - 1901) * 365 + (ano - 1901) / 4 + dia + (mes - 1)
+                * 31 - ((mes * 4 + 23) / 10)
+                * ((mes + 12) / 15) + ((4 - ano % 4) / 4)
+                * ((mes + 12) / 15);
+        return diaDoSeculo;
+    }
+    
+    public int obterDiferenca(Data d){
+        return (obterDiaDoSeculo()-d.obterDiaDoSeculo());
+    }
+    
+    public boolean ehPalindromo(){ //metado esta errado, colocar para inverter a data depois verificar
+        String invertida = ""; 
+        String data = formatarData("ddmmyy");
+        for(int i = data.length()-1;i>=0;i--){
+            invertida += data.charAt(i);
+        }
+        return(invertida.equals(data));
     }
 }
