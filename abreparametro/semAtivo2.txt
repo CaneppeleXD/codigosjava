@@ -1,0 +1,3 @@
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametro.pas(71):         0:AbreParametro('select * from parametro order by parametro'); FEITO**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametro.pas(72):         1:AbreParametro('select * from parametro order by nome');	FEITO**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametroProceda.pas(64):     AbreParametroProceda('select P.*, (select nome from clifor where empresa=P.empresa and clifor=P.clifor) as nome from parametroproceda P where P.empresa='+IntToStr(DM.empresa)+' order by nome'); FEITO** COLOCAR FILTRO

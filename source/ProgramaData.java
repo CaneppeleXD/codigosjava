@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.univates.source;
+//package br.univates.source;
 
 /**
  *
@@ -16,8 +16,8 @@ public class ProgramaData {
      */
     public static void main(String[] args) {
         Data d = new Data(05, 02, 2000);
-        Data d2 = new Data(11, 11, 11);
-        System.out.println(d2.ehPalindromo());
+        Data d2 = new Data(11, 8, 2022);
+        System.out.println(d2.obterDiaSemana());
         
     }
     

@@ -1,0 +1,56 @@
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_Util.pas(8689):     AbreParametro('select * from parametro where parametro='+IntToStr(Parametro));
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametro.pas(71):         0:AbreParametro('select * from parametro order by parametro'); FEITO**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametro.pas(72):         1:AbreParametro('select * from parametro order by nome');	FEITO**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutEntrada5.pas(419):             AbreParametro('select * from parametro where parametro='+IntToStr(ParametroDespesa)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutEntrada5.pas(509):         AbreParametro('select * from parametro where parametro='+IntToStr(Parametro)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(481):             AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(774):                 AbreParametro('select * from parametro where parametro='+IntToStr(Parametro));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(932):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1054):         AbreParametro('select * from parametro'); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1237):                                     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1597):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1689):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1724):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1794):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1809):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1881):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadMovto.pas(1943):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraSintegra.pas(210):             AbreParametro('select * from parametro where parametro='+IntToStr(DM.IBQ_Aux.FieldValues['PARAMETRO'])); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraSintegra.pas(341):                 AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraSintegra.pas(429):             AbreParametro('select * from parametro where parametro='+IntToStr(DM.IBQ_Aux.FieldValues['PARAMETRO'])); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraSintegra.pas(504):             AbreParametro('select * from parametro where parametro='+IntToStr(DM.IBQ_Aux.FieldValues['PARAMETRO'])); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraSintegra.pas(650):             AbreParametro('select * from parametro where parametro='+IntToStr(DM.IBQ_Aux.FieldValues['PARAMETRO'])); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutBancoDados.pas(3065):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraBaseMovto.pas(120):         AbreParametro('select * from parametro where parametro='+IntToStr(DM.IBQ_Aux.FieldValues['PARAMETRO'])); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ConsMovto.pas(453):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ConsConhecimento.pas(404):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value));N 
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ConsConhecimento.pas(830):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutMovtoDespPro.pas(309):             AbreParametro('select * from parametro where parametro='+Copy(DM.IBD_ConfiguracaoCONFIGURACAO.Value,1,5)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutMovtoDespPro.pas(478):                             AbreParametro('select * from parametro where parametro='+IntToStr(parametro)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadCtrc.pas(1063):         AbreParametro('select * from parametro'); N**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadCtrc.pas(2049):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadCtrc.pas(2310):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ConsMovto2.pas(303):     AbreParametro('select * from parametro where parametro='+IntToStr(IBQ_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_CadParametroProceda.pas(64):     AbreParametroProceda('select P.*, (select nome from clifor where empresa=P.empresa and clifor=P.clifor) as nome from parametroproceda P where P.empresa='+IntToStr(DM.empresa)+' order by nome'); FEITO**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutAnulacaoCtrc.pas(529):         AbreParametro(Aux); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutAjustaSped.pas(559):                                     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutAjustaSped.pas(586):                                     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutAltEntrada.pas(682):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutAltEntrada.pas(975):                                                     AbreParametro('select * from parametro where parametro='+IntToStr(Parametro));N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutEntradaNFe.pas(1277):                             AbreParametro('select * from parametro where parametro='+IntToStr(ParametroDespesa)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaCte.pas(213):             AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaCte.pas(1027):                                 AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaCte.pas(2313):     AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraNFe.pas(2045):         AbreParametro('select * from parametro where parametro='+IntToStr(IBQNFePARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraNFe.pas(2827):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutMovIntCtb.pas(301):         AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovIntCtbPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutMovIntCtb.pas(508):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovIntCtbPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutGeraMovIntCtb.pas(6286):             AbreParametro('select * from parametro where parametro='+DBE_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaNFSe.pas(189):         AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaNFSe.pas(326):                 AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaNFSe.pas(983):     AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ImportarCadastros.pas(1292):         AbreParametro('select * from parametro where parametro='+id); N**
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_RelMinuta.pas(620):     AbreParametro('Select * from parametro where parametro = '+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_UtilCaixa.pas(374):     AbreParametro('select * from parametro where parametro='+IntToStr(DM_Est.IBD_MovtoPARAMETRO.Value)); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaNfeSaida.pas(88):             AbreParametro('select * from parametro where parametro='+Ed_Parametro.Text); N
+C:\Users\Magaiver\Documents\Software\EmeCompilar\U_ManutImportaDiesel.pas(362):                     AbreParametro('select * from parametro where parametro='+IntToStr(Parametro)); N

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.univates.source;
+//package br.univates.source;
 
 /**
  *
@@ -20,7 +20,7 @@ public class Data {
     public Data() {
         dia = 1;
         mes = 1;
-        ano = 1;
+        ano = 1902;
     }
 
     public Data(int dia, int mes, int ano) {
@@ -30,7 +30,7 @@ public class Data {
         if (!ehCorreta()) {
             this.dia = 1;
             this.mes = 1;
-            this.ano = 1;
+            this.ano = 1902;
         }
 
     }
@@ -59,7 +59,7 @@ public class Data {
 
     public boolean trocarAno(int ano) {
         boolean retorno = false;
-        if (ano > 0) {
+        if (ano > 1901) {
             this.ano = ano;
             retorno = true;
         }
@@ -91,7 +91,7 @@ public class Data {
     }
 
     public int obterUltimoDiaMes() {
-        int[] dias = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] dias = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         if (ehBissexto()) {
             dias[1]++;
         }
@@ -99,7 +99,7 @@ public class Data {
     }
 
     public boolean ehCorreta() {
-        return ((dia > 0 && dia <= obterUltimoDiaMes()) && (mes > 0 && mes <= 12) && (ano > 0));
+        return ((dia > 0 && dia <= obterUltimoDiaMes()) && (mes > 0 && mes <= 12) && (ano > 1900));
     }
 
     public String obterEstacaoDoAno() { // pode ser um metodo static
@@ -136,12 +136,9 @@ public class Data {
         return (obterDiaAno() * 24 * 60 * 60);
     }
 
-    /*public int obterDiferenca(Data d) {
-
-    }*/
     private static Data[] preencherSignos(int ano) {
         Data[] signosData = new Data[12];
-        int[] signosBruto = {2103, 2104, 2105, 2106, 2207, 2308, 2309, 2310, 2211, 2212, 2101, 2002};
+        int[] signosBruto = { 2103, 2104, 2105, 2106, 2207, 2308, 2309, 2310, 2211, 2212, 2101, 2002 };
         for (int i = 0; i < 12; i++) {
             signosData[i] = new Data(1, 1, ano);
             signosData[i].trocarMes(signosBruto[i] % 100);
@@ -152,8 +149,8 @@ public class Data {
     }
 
     public String obterSigno() {
-        String[] signos = {"Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário",
-            "Capricórnio", "Aquário", "Peixes"};
+        String[] signos = { "Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário",
+                "Capricórnio", "Aquário", "Peixes" };
         Data[] inicioSignos = preencherSignos(ano);
         boolean flag = false;
         int i;
@@ -234,8 +231,8 @@ public class Data {
     }
 
     public String obterExtensoMes() {
-        String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
-            "Outubro", "Novembro", "Dezembro"};
+        String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+                "Outubro", "Novembro", "Dezembro" };
         return (meses[mes - 1]);
     }
 
@@ -248,10 +245,11 @@ public class Data {
                 mes = 1;
             }
         }
-        this.dia += dia; //talvez funcione dessa maneira. testar ainda
+        this.dia += dia;
     }
 
-    //metodos de retrocder pode influenciar nagativamente na integridade da classe da maneira que está
+    // metodo de retrocder pode influenciar nagativamente na integridade da classe
+    // da maneira que está
     public void retrocederDias(int dia) {
         while (this.dia - dia <= 0) {
             mes--;
@@ -264,24 +262,72 @@ public class Data {
         this.dia -= dia;
     }
 
+    public void avancarUmDia() {
+        avancarDias(1);
+    }
+
+    public void retrocederUmDia() {
+        avancarDias(1);
+    }
+
     public int obterDiaDoSeculo() {
         int diaDoSeculo = (ano - 1901) * 365 + (ano - 1901) / 4 + dia + (mes - 1)
                 * 31 - ((mes * 4 + 23) / 10)
-                * ((mes + 12) / 15) + ((4 - ano % 4) / 4)
-                * ((mes + 12) / 15);
+                        * ((mes + 12) / 15)
+                + ((4 - ano % 4) / 4)
+                        * ((mes + 12) / 15);
         return diaDoSeculo;
     }
-    
-    public int obterDiferenca(Data d){
-        return (obterDiaDoSeculo()-d.obterDiaDoSeculo());
+
+    public int obterDiferenca(Data d) {
+        return (obterDiaDoSeculo() - d.obterDiaDoSeculo());
     }
-    
-    public boolean ehPalindromo(){ //metado esta errado, colocar para inverter a data depois verificar
-        String invertida = ""; 
+
+    public boolean ehPalindromo() {
+        String invertida = "";
         String data = formatarData("ddmmyy");
-        for(int i = data.length()-1;i>=0;i--){
+        for (int i = data.length() - 1; i >= 0; i--) {
             invertida += data.charAt(i);
         }
-        return(invertida.equals(data));
+        return (invertida.equals(data));
     }
+
+    public Data obterDataFutura(int dias) {
+        Data retorno = new Data(dia, mes, ano);
+        retorno.avancarDias(dias);
+        return (retorno);
+
+    }
+
+    public String obterFaseDaLua() {
+        String[] fases = { "Cheia", "Minguante", "Nova", "Crescente" };
+        Data luacheia = new Data(11, 8, 2022);
+        int diferenca = Math.abs(obterDiferenca(luacheia));
+        return (fases[(diferenca / 7) % 4]);
+
+    }
+
+    public boolean ehFeriado() {
+        Arquivo feriados = new Arquivo("feriados");
+        feriados.abrirLeitura();
+        String linha = "";
+        String data = formatarData("dd/mm/yyyy");
+        boolean retorno = false;
+        while (linha != null && retorno == false) {
+            if (data.equals(linha)) {
+                retorno = true;
+            }
+            linha = feriados.lerLinha();
+        }
+        feriados.fecharArquivo();
+        return (retorno);
+    }
+
+    public String obterDiaSemana() {
+        String[] semana = { "Segunda-feira", "Terça-feira", "Quarta-feira",
+                "Quinta-feira", "Sexta-feira", "Sábado", "Domingo" };
+
+        return semana[obterDiaDoSeculo() % 7];
+    }
+
 }
