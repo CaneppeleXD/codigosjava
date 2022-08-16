@@ -10,7 +10,7 @@ public class Reservatorio {
 
     public boolean adicionar(int n) {
         boolean retorno = false;
-        if(nivel+n<=capacidade){
+        if(n>0 && nivel+n<=capacidade){
             retorno = true;
             nivel+=n;
         }
@@ -19,7 +19,7 @@ public class Reservatorio {
     
     public boolean retirar(int n) {
         boolean retorno = false;
-        if(nivel-n>=0){
+        if(nivel>0 && nivel-n>=0){
             retorno = true;
             nivel-=n;
         }
