@@ -8,7 +8,7 @@ public class Reservatorio {
         this.capacidade = capacidade;
     }
 
-    public boolean colocar(int n) {
+    public boolean adicionar(int n) {
         boolean retorno = false;
         if(nivel+n<=capacidade){
             retorno = true;
@@ -17,7 +17,7 @@ public class Reservatorio {
         return(retorno);
     }
     
-    public boolean tirar(int n) {
+    public boolean retirar(int n) {
         boolean retorno = false;
         if(nivel-n>=0){
             retorno = true;
