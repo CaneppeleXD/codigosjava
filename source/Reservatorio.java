@@ -1,26 +1,27 @@
 public class Reservatorio {
     
     private final int capacidade;
-    private int conteudo; 
+    private int nivel; 
 
     public Reservatorio(int capacidade){
+        this.nivel = 0;
         this.capacidade = capacidade;
     }
 
     public boolean colocar(int n) {
         boolean retorno = false;
-        if(conteudo+n<=capacidade){
+        if(nivel+n<=capacidade){
             retorno = true;
-            conteudo+=n;
+            nivel+=n;
         }
         return(retorno);
     }
     
     public boolean tirar(int n) {
         boolean retorno = false;
-        if(conteudo-n>=0){
+        if(nivel-n>=0){
             retorno = true;
-            conteudo-=n;
+            nivel-=n;
         }
         return(retorno);
     }
@@ -30,11 +31,11 @@ public class Reservatorio {
     }
 
     public int obterConteudo(){
-        return(conteudo);
+        return(nivel);
     }
 
     public double porcentagem(){
-        return(100*(conteudo/(capacidade*1.0)));
+        return(100*(nivel/(capacidade*1.0)));
     }
 
 }
