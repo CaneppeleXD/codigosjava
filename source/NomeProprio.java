@@ -10,6 +10,7 @@ package br.univates.source;
  * @author joao.caneppele
  */
 public class NomeProprio {
+
     String nome;
 
     public NomeProprio(String nome) {
@@ -31,7 +32,7 @@ public class NomeProprio {
     }
 
     public String getSobrenome() {
-        return (nome.substring(nome.lastIndexOf(" ") + 1, nome.length()));
+        return (nome.substring(nome.lastIndexOf(" ") + 1, nome.length())); //se nao tiver sobrenome vai retornar nada
     }
 
     public String getPreNome() {
@@ -39,42 +40,51 @@ public class NomeProprio {
     }
 
     public String getIniciais() {
-        String iniciais = nome.charAt(0) + "";
+        return getIniciais(false);
+    }
+
+    public String getIniciais(boolean comPonto) {
+        String iniciais = nome.charAt(0) + (comPonto ? ". " : "");
+        String salva = this.nome;
+        this.nome = this.getNomeSemCharEspeciais();
+        String nome = getNomeSemLigacoes();
+        this.nome = salva;
         for (int i = 0; i < nome.length(); i++) {
             if (nome.charAt(i) == ' ') {
-                iniciais += nome.charAt(i + 1);
+                iniciais += nome.charAt(i + 1) + (comPonto ? ". " : "");
             }
         }
         return (iniciais);
     }
 
+    private String getNomeSemLigacoes() {
+        String[] ligacoes = {" de ", " do ", " da ", " dos ", " das "};
+        String nomeAux = nome;
+        for (String ligacao : ligacoes) {
+            if (nomeAux.contains(ligacao)) {
+                nomeAux = nomeAux.replace(ligacao, " ");
+            }
+        }
+        return nomeAux;
+    }
+
     public String getNomeSemCharEspeciais() {
         String especiais = "äàáâãåèéêëìíîïòóôöõùúûüñýÿç";
+        String limpos = "aaaaaaeeeeiiiiooooouuuunyyc";
         String nome = this.nome;
         for (int i = 0; i < nome.length(); i++) {
-            for (int iespecial = 0; iespecial < especiais.length(); iespecial++) {
-                if (nome.charAt(i) == especiais.charAt(iespecial)) {
-                    if (iespecial < 6) {
-                        nome = nome.replace(nome.charAt(i), 'a');
-                    } else if (iespecial < 10) {
-                        nome = nome.replace(nome.charAt(i), 'e');
-                    } else if (iespecial < 14) {
-                        nome = nome.replace(nome.charAt(i), 'i');
-                    } else if (iespecial < 19) {
-                        nome = nome.replace(nome.charAt(i), 'o');
-                    } else if (iespecial < 23) {
-                        nome = nome.replace(nome.charAt(i), 'u');
-                    } else if (iespecial < 24) {
-                        nome = nome.replace(nome.charAt(i), 'n');
-                    } else if (iespecial < 26) {
-                        nome = nome.replace(nome.charAt(i), 'y');
-                    } else {
-                        nome = nome.replace(nome.charAt(i), 'c');
-                    }
-                }
-            }
+            nome = nome.replace(especiais.charAt(i), limpos.charAt(i));
         }
         return (nome);
     }
-
+        
+    
+    public String getNomeFormatado(int formato){
+        String retorno = "";
+        switch (formato){
+            case 1: retorno = this.getSobrenome().toUpperCase()+", "+this.getPreNome();
+            case 2: retorno = this.getSobrenome().toUpperCase()+", "+this.getIniciais(true).substring(0, this.getIniciais(true).trim().lastIndexOf(" "));
+        }
+        return(retorno);
+    }
 }
