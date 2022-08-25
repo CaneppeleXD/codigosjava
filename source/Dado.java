@@ -32,6 +32,9 @@ public class Dado {
     public int girarDado(int vezes) {
         for (int i = 0; i<vezes;i++) {
             int evento = (int) Math.round(Math.random() * 6);
+            while(evento == 0){
+                evento = (int) Math.round(Math.random() * 6);
+            }
             historico = Dado.adicionaEvento(historico, evento);
         }
         return (historico[historico.length-1]);
