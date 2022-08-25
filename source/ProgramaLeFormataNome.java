@@ -15,7 +15,29 @@ public class ProgramaLeFormataNome {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        NomeProprio[] nomes = lerGerarNomes("H:\\codigosjava\\segundosemestre\\Source\\src\\main\\java\\br\\univates\\source\\nomes.txt");
+        imprimirFormatado(nomes);
+    }
+    public static NomeProprio[] lerGerarNomes(String arquivo){
+        Arquivo nomes = new Arquivo(arquivo);
+        int linhas = 0;
+        nomes.abrirLeitura();
+        while(nomes.lerLinha() != null){
+            linhas++;
+        }
+        nomes.fecharArquivo();
+        NomeProprio[] vetorNomes = new NomeProprio[linhas];
+        nomes.abrirLeitura();
+        for (NomeProprio vetorNome : vetorNomes) {
+            vetorNome = new NomeProprio(nomes.lerLinha());
+        }
+        nomes.fecharArquivo();
+        return(vetorNomes);
     }
     
+    public static void imprimirFormatado(NomeProprio[] nomes){
+        for(NomeProprio nome : nomes){
+            System.out.println(nome.getNomeFormatado(2));
+        }
+    }
 }
