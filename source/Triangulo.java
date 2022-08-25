@@ -1,4 +1,4 @@
-//package br.univates.source;
+package br.univates.source;
 
 public class Triangulo {
     private double a;
@@ -9,11 +9,7 @@ public class Triangulo {
         this.a = 1;
         this.b = 1;
         this.c = 1;
-        if (Triangulo.ehValido(a, b, c)) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-        }
+        setLados(a, b, c);
     }
 
     public boolean setA(double a) {
@@ -37,10 +33,17 @@ public class Triangulo {
         return (retorno);
     }
 
-    public boolean ehValido() {
-        return (Math.abs(a - b) < c && c < Math.abs(a + b));
+    public boolean setLados(double a, double b, double c){
+        boolean retorno = false;
+        if(Triangulo.ehValido(a,b,c)){
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            retorno = true;
+        }
+        return(retorno);
     }
-
+    
     public static boolean ehValido(double a, double b, double c) {
         return (Math.abs(a - b) < c && c < Math.abs(a + b));
     }
