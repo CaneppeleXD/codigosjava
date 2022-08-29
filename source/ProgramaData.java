@@ -17,6 +17,8 @@ public class ProgramaData {
     public static void main(String[] args) {
         Triangulo t = new Triangulo(15, 1, 18);
         System.out.println(t.getA());
+        Data d = new Data(19,8,2022);
+        System.out.println(d.obterFaseDaLua());
     }
     
 }

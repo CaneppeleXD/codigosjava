@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.univates.source;
+//ackage br.univates.source;
 
 /**
  *
@@ -15,7 +15,7 @@ public class ProgramaLeFormataNome {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        NomeProprio[] nomes = lerGerarNomes("H:\\codigosjava\\segundosemestre\\Source\\src\\main\\java\\br\\univates\\source\\nomes.txt");
+        NomeProprio[] nomes = lerGerarNomes("/home/flexabus-java-3/pasta do jao/javaas/source/nomes.txt");
         imprimirFormatado(nomes);
     }
     public static NomeProprio[] lerGerarNomes(String arquivo){
@@ -28,8 +28,8 @@ public class ProgramaLeFormataNome {
         nomes.fecharArquivo();
         NomeProprio[] vetorNomes = new NomeProprio[linhas];
         nomes.abrirLeitura();
-        for (NomeProprio vetorNome : vetorNomes) {
-            vetorNome = new NomeProprio(nomes.lerLinha());
+        for (int i = 0;i<vetorNomes.length;i++) {
+            vetorNomes[i] = new NomeProprio(nomes.lerLinha());
         }
         nomes.fecharArquivo();
         return(vetorNomes);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.univates.source;
+//package br.univates.source;
 
 /**
  *
@@ -72,7 +72,7 @@ public class NomeProprio {
         String especiais = "äàáâãåèéêëìíîïòóôöõùúûüñýÿç";
         String limpos = "aaaaaaeeeeiiiiooooouuuunyyc";
         String nome = this.nome;
-        for (int i = 0; i < nome.length(); i++) {
+        for (int i = 0; i < especiais.length(); i++) {
             nome = nome.replace(especiais.charAt(i), limpos.charAt(i));
         }
         return (nome);
