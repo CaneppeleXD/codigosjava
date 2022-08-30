@@ -3,12 +3,16 @@ package br.univates.maquinadesuco;
 public class MaquinaDeSuco {
     private double agua, capacidadeAgua, aguaSuco, essenciaSuco;
     private double[] essencias, capacidadeEssencias;
-
-    public MaquinaDeSuco(int capacidade){
+    private int sucosServidos;
+    public MaquinaDeSuco(int quantidadeDeEssencias){
+        sucosServidos = 0;
         agua = 0;
-        capacidadeAgua = 0;
-        essencias = new double[capacidade];
-        capacidadeEssencias = new double[capacidade];
+        capacidadeAgua = 20000;
+        essencias = new double[quantidadeDeEssencias];
+        capacidadeEssencias = new double[quantidadeDeEssencias];
+        for(int i = 0;i<capacidadeEssencias.length;i++){
+            capacidadeEssencias[i]=5000;
+        }
         aguaSuco = 200;
         essenciaSuco = 50;
     }
@@ -37,7 +41,7 @@ public class MaquinaDeSuco {
         return(retorno);
     }
 
-    public double getAgua(){
+    public double getQuantidadeAgua(){
         return(agua);
     }
     
@@ -63,7 +67,7 @@ public class MaquinaDeSuco {
         return(retorno);
     }
 
-    public double getEssencia(int essencia){
+    public double getQuantidadeEssencia(int essencia){
         return(essencias[essencia]);
     }
 
@@ -88,8 +92,17 @@ public class MaquinaDeSuco {
         if(retorno){
             tirarAgua(aguaSuco);
             tirarEssencia(essencia, essenciaSuco);
+            sucosServidos++;
         }
         return(retorno);
+    }
+
+    public int getQuantidadeDeEssencias(){
+        return(essencias.length);
+    }
+
+    public int getSucosServidos(){
+        return(sucosServidos);
     }
 
     /*public void adicionarEssencia(){
