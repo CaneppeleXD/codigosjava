@@ -93,7 +93,7 @@ public class MaquinaDeSuco {
     }
 
     /*public void adicionarEssencia(){
-        Util.
+        essencias = Arrays.copyOf(essencias, essencias.length+1);
     }*/
-    // fazer metodo para adicionar novas essencias no vetor e colocar nome nelas
+    // continuar a fazer metodo para adicionar novas essencias no vetor e colocar nome nelas
 }
