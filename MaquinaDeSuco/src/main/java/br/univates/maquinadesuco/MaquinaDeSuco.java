@@ -1,28 +1,46 @@
 package br.univates.maquinadesuco;
 
+import br.univates.source.Reservatorio;
+
 public class MaquinaDeSuco {
-    private double agua, capacidadeAgua, aguaSuco, essenciaSuco;
-    private double[] essencias, capacidadeEssencias;
-    private int sucosServidos;
-    public MaquinaDeSuco(int quantidadeDeEssencias){
-        sucosServidos = 0;
-        agua = 0;
-        capacidadeAgua = 20000;
-        essencias = new double[quantidadeDeEssencias];
-        capacidadeEssencias = new double[quantidadeDeEssencias];
-        for(int i = 0;i<capacidadeEssencias.length;i++){
-            capacidadeEssencias[i]=5000;
-        }
+    private String[] sabores;
+    private int aguaSuco, essenciaSuco;
+    private Reservatorio[] reservatorios;
+    private double[] precos; 
+    private int[] sucosServidos;
+    public MaquinaDeSuco(String[] quantidadeDeEssencias){
         aguaSuco = 200;
         essenciaSuco = 50;
+        reservatorios = new Reservatorio[quantidadeDeEssencias.length+1];
+        precos = new double[quantidadeDeEssencias.length];
+        sucosServidos = new int[quantidadeDeEssencias.length];
+        sabores = new String[quantidadeDeEssencias.length];
+        for (int i = 0; i < reservatorios.length; i++) {
+            if(i == 0)
+                reservatorios[i] = new Reservatorio(20000);
+            else{
+                reservatorios[i] = new Reservatorio(5000);
+                setPreco(i-1,2.5);
+                setSabor(i-1,quantidadeDeEssencias[i-1]);
+            }
+            
+        }
+    }
+
+    public String getSabor(int essencia) {
+        return sabores[essencia-1];
+    }
+    
+    public void setSabor(int essencia, String nome){
+        sabores[essencia-1] = nome;
     }
 
     public double getAguaNoSuco(){
         return(aguaSuco);
     }
 
-    public boolean setAguaNoSuco(double quantia){
-        boolean retorno = quantia<=capacidadeAgua;
+    public boolean setAguaNoSuco(int quantia){
+        boolean retorno = quantia<=reservatorios[0].obterCapacidade();
         if(retorno){
             aguaSuco=quantia;
         }
@@ -33,8 +51,8 @@ public class MaquinaDeSuco {
         return(essenciaSuco);
     }
 
-    public boolean setEssenciaNoSuco(double quantia){
-        boolean retorno = quantia<=capacidadeAgua;
+    public boolean setEssenciaNoSuco(int quantia){
+        boolean retorno = quantia<=reservatorios[reservatorios.length].obterCapacidade();
         if(retorno){
             essenciaSuco=quantia;
         }
@@ -42,71 +60,72 @@ public class MaquinaDeSuco {
     }
 
     public double getQuantidadeAgua(){
-        return(agua);
+        return(reservatorios[0].obterConteudo());
     }
     
-    public boolean colocarAgua(double agua){
-        if(this.agua+agua<=capacidadeAgua){
-            this.agua+=agua;
-        }
-        return(this.agua+agua<=capacidadeAgua);
+    public boolean colocarAgua(int agua){
+            return(reservatorios[0].adicionar(agua));
     }
 
-    public boolean tirarAgua(double agua){
-        if(this.agua-agua>=0){
-            this.agua-=agua;
-        }
-        return(this.agua-agua>=0);
+    public boolean tirarAgua(int agua){
+        return(reservatorios[0].retirar(agua));
     }
 
     public boolean setcapacidadeAgua(int capacidadeAgua){
-        boolean retorno = (capacidadeAgua>=agua);
-        if(retorno){
-            this.capacidadeAgua=capacidadeAgua;
-        }
-        return(retorno);
+        return(reservatorios[0].setCapacidade(capacidadeAgua));
     }
 
     public double getQuantidadeEssencia(int essencia){
-        return(essencias[essencia]);
+        return(reservatorios[essencia].obterConteudo());
     }
 
-    public boolean colocarEssencia(int essencia, double quantidade){
-        boolean retorno = essencias[essencia]+quantidade<=capacidadeEssencias[essencia];
-        if(retorno){
-            essencias[essencia]+=quantidade;
-        }
-        return(retorno);
+    public boolean colocarEssencia(int essencia, int quantidade){
+        return(reservatorios[essencia].adicionar(quantidade));
     }
 
-    public boolean tirarEssencia(int essencia, double quantidade){
-        boolean retorno = essencias[essencia]-quantidade>=0;
-        if(retorno){
-            essencias[essencia]-=quantidade;
-        }
-        return(retorno);
+    public boolean tirarEssencia(int essencia, int quantidade){
+        return(reservatorios[essencia].adicionar(quantidade));
     }
 
     public boolean servirSuco(int essencia){
-        boolean retorno = capacidadeAgua>=aguaSuco && capacidadeEssencias[essencia]>=essenciaSuco;
+        boolean retorno = reservatorios[0].obterConteudo()>=aguaSuco && reservatorios[essencia].obterConteudo()>=essenciaSuco;
         if(retorno){
             tirarAgua(aguaSuco);
             tirarEssencia(essencia, essenciaSuco);
-            sucosServidos++;
+            sucosServidos[essencia-1]++;
         }
         return(retorno);
     }
 
     public int getQuantidadeDeEssencias(){
-        return(essencias.length);
+        return(reservatorios.length-1);
     }
 
-    public int getSucosServidos(){
-        return(sucosServidos);
+    public int getTotalSucosServidos(){
+        int total = 0;
+        for (int i = 0; i < sucosServidos.length; i++) {
+            total+=sucosServidos[i];
+        }
+        return(total);
     }
-
+    
+    public int getSucosServidos(int essencia){
+        return(sucosServidos[essencia-1]);
+    }
+    
+    public void setPreco(int essencia, double preco) {
+        precos[essencia-1] = preco;
+    }
+    
+    public double getPreco(int essencia){
+        return(precos[essencia-1]);
+    }
+    
+    //adaptar a classe telaprincipal à nova classe maquinadesuco
     /*public void adicionarEssencia(){
         essencias = Arrays.copyOf(essencias, essencias.length+1);
     }*/
     // continuar a fazer metodo para adicionar novas essencias no vetor e colocar nome nelas
+
+    
 }
