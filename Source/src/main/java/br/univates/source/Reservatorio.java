@@ -11,7 +11,7 @@ package br.univates.source;
  */
 public class Reservatorio {
     
-    private final int capacidade;
+    private int capacidade;
     private int nivel; 
 
     public Reservatorio(int capacidade){
@@ -47,6 +47,14 @@ public class Reservatorio {
 
     public double porcentagem(){
         return(100*(nivel/(capacidade*1.0)));
+    }
+    
+    public boolean setCapacidade(int capacidade){
+        boolean retorno = capacidade<=nivel;
+        if(retorno){
+            this.capacidade = capacidade;
+        }
+        return(retorno);
     }
 
 }
