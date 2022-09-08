@@ -19,7 +19,6 @@ public class TelaPrincipal {
     }
 
     public void exibir() {
-
         while (true) {
             while (menuUsu() != 2) {
             }
@@ -62,7 +61,6 @@ public class TelaPrincipal {
                 "[0] DESLIGAR";
         int comando = Entrada.leiaInt(menuAdmin);
         switch (comando) {
-
             case 1:
                 imprimirConsulta();
                 break;
@@ -107,9 +105,12 @@ public class TelaPrincipal {
                 break;
             case 0:
                 System.out.println("DESLIGADO");
+                DAL dal = new DAL(
+                        "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
+                        maquina1);
+                dal.salvar();
                 System.exit(0);
                 break;
-
         }
         return (comando);
     }
@@ -133,19 +134,19 @@ public class TelaPrincipal {
         String consulta = "\nCONSULTA\n\n" +
                 "Sucos Servidos: " + maquina1.getTotalSucosServidos() +
                 "\nSaldo: " + maquina1.getTotalSaldo() +
-                "\nQuantidade Água: " + maquina1.getQuantidadeAgua()+"ml";
+                "\nQuantidade Água: " + maquina1.getQuantidadeAgua() + "ml";
         for (int i = 1; i <= maquina1.getQuantidadeDeEssencias(); i++) {
-            consulta += "\nQuant. Essência de " + maquina1.getSabor(i) + ": " + maquina1.getQuantidadeEssencia(i)+"ml";
+            consulta += "\nQuant. Essência de " + maquina1.getSabor(i) + ": " + maquina1.getQuantidadeEssencia(i)
+                    + "ml";
         }
         System.out.println(consulta);
     }
 
-    public void imprimirPrecos(){
+    public void imprimirPrecos() {
         String impressao = "\nPREÇOS\n";
         for (int i = 1; i <= maquina1.getQuantidadeDeEssencias(); i++) {
             impressao += "\nPreço suco de " + maquina1.getSabor(i) + ": R$" + maquina1.getPreco(i);
         }
         System.out.println(impressao);
-
     }
 }

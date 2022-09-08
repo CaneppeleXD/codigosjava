@@ -8,6 +8,7 @@ public class MaquinaDeSuco {
     private Reservatorio[] reservatorios;
     private double[] precos, saldos;
     private int[] sucosServidos;
+
     public MaquinaDeSuco(String[] quantidadeDeEssencias) {
         aguaSuco = 200;
         essenciaSuco = 50;
@@ -26,6 +27,10 @@ public class MaquinaDeSuco {
             }
 
         }
+    }
+
+    public int getCapacidade(int reservatorio){
+        return(reservatorios[reservatorio].obterCapacidade());
     }
 
     public String getSabor(int essencia) {
@@ -53,7 +58,7 @@ public class MaquinaDeSuco {
     }
 
     public boolean setEssenciaNoSuco(int quantia) {
-        boolean retorno = quantia <= reservatorios[reservatorios.length].obterCapacidade();
+        boolean retorno = quantia <= reservatorios[reservatorios.length-1].obterCapacidade();
         if (retorno) {
             essenciaSuco = quantia;
         }
@@ -95,7 +100,7 @@ public class MaquinaDeSuco {
             tirarAgua(aguaSuco);
             tirarEssencia(essencia, essenciaSuco);
             sucosServidos[essencia - 1]++;
-            saldos[essencia - 1]+=precos[essencia-1];
+            saldos[essencia - 1] += precos[essencia - 1];
         }
         return (retorno);
     }
@@ -131,9 +136,17 @@ public class MaquinaDeSuco {
     public double getTotalSaldo() {
         int total = 0;
         for (int i = 0; i < saldos.length; i++) {
-            total += getSaldo(i+1);
+            total += getSaldo(i + 1);
         }
         return (total);
+    }
+
+    public void setSaldo(int essencia, double saldo){
+        saldos[essencia-1] = saldo;
+    }
+
+    public void setSucosServidos(int essencia, int sucosServidos){
+        this.sucosServidos[essencia-1] = sucosServidos;
     }
 
     // adaptar a classe telaprincipal à nova classe maquinadesuco
