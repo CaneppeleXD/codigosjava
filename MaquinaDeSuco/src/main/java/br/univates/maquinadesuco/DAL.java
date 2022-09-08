@@ -30,8 +30,7 @@ public class DAL {
     }
 
     public MaquinaDeSuco recuperar() {
-        boolean retorno = false;
-        if (retorno = repo.abrirLeitura()) {
+        if (repo.abrirLeitura()) {
             recuperarSabores();
             m.setAguaNoSuco((int) Math.round(Double.parseDouble(repo.lerLinha())));
             m.setEssenciaNoSuco((int) Math.round(Double.parseDouble(repo.lerLinha())));
@@ -44,7 +43,7 @@ public class DAL {
         return m;
     }
 
-    private void recuperarSucosServidos(){
+    private void recuperarSucosServidos() {
         String linha = repo.lerLinha();
         for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
             m.setSucosServidos(i, Integer.parseInt(linha.substring(0, linha.indexOf(";"))));
@@ -52,7 +51,7 @@ public class DAL {
         }
     }
 
-    private void recuperarSaldos(){
+    private void recuperarSaldos() {
         String linha = repo.lerLinha();
         for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
             m.setSaldo(i, Double.parseDouble(linha.substring(0, linha.indexOf(";"))));

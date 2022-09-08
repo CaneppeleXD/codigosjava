@@ -29,8 +29,8 @@ public class MaquinaDeSuco {
         }
     }
 
-    public int getCapacidade(int reservatorio){
-        return(reservatorios[reservatorio].obterCapacidade());
+    public int getCapacidade(int reservatorio) {
+        return (reservatorios[reservatorio].obterCapacidade());
     }
 
     public String getSabor(int essencia) {
@@ -58,7 +58,7 @@ public class MaquinaDeSuco {
     }
 
     public boolean setEssenciaNoSuco(int quantia) {
-        boolean retorno = quantia <= reservatorios[reservatorios.length-1].obterCapacidade();
+        boolean retorno = quantia <= reservatorios[reservatorios.length - 1].obterCapacidade();
         if (retorno) {
             essenciaSuco = quantia;
         }
@@ -141,12 +141,12 @@ public class MaquinaDeSuco {
         return (total);
     }
 
-    public void setSaldo(int essencia, double saldo){
-        saldos[essencia-1] = saldo;
+    public void setSaldo(int essencia, double saldo) {
+        saldos[essencia - 1] = saldo;
     }
 
-    public void setSucosServidos(int essencia, int sucosServidos){
-        this.sucosServidos[essencia-1] = sucosServidos;
+    public void setSucosServidos(int essencia, int sucosServidos) {
+        this.sucosServidos[essencia - 1] = sucosServidos;
     }
 
     // adaptar a classe telaprincipal à nova classe maquinadesuco

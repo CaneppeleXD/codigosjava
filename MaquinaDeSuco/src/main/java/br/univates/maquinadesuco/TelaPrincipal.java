@@ -19,11 +19,15 @@ public class TelaPrincipal {
     }
 
     public void exibir() {
+        DAL dal = new DAL(
+                "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
+                maquina1);
         while (true) {
             while (menuUsu() != 2) {
             }
             while (menuAdmin() != 10) {
             }
+            dal.salvar();
         }
     }
 
@@ -105,10 +109,6 @@ public class TelaPrincipal {
                 break;
             case 0:
                 System.out.println("DESLIGADO");
-                DAL dal = new DAL(
-                        "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
-                        maquina1);
-                dal.salvar();
                 System.exit(0);
                 break;
         }
