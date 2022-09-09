@@ -90,7 +90,7 @@ public class MaquinaDeSuco {
     }
 
     public boolean tirarEssencia(int essencia, int quantidade) {
-        return (reservatorios[essencia].adicionar(quantidade));
+        return (reservatorios[essencia].retirar(quantidade));
     }
 
     public boolean servirSuco(int essencia) {

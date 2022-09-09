@@ -8,7 +8,7 @@ public class ProgramaMaquinaDeSuco {
                         "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
                         m1);
         m1 = dal.recuperar();
-        TelaPrincipal t = new TelaPrincipal(m1);
+        TelaPrincipal t = new TelaPrincipal(m1, dal);
         t.exibir();
     }
 }

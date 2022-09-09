@@ -13,21 +13,20 @@ import br.univates.source.Entrada;
  */
 public class TelaPrincipal {
     private MaquinaDeSuco maquina1;
-
-    public TelaPrincipal(MaquinaDeSuco maquina1) {
+    private DAL dal;
+    public TelaPrincipal(MaquinaDeSuco maquina1, DAL dal) {
         this.maquina1 = maquina1;
+        this.dal = dal;
     }
 
     public void exibir() {
-        DAL dal = new DAL(
-                "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
-                maquina1);
         while (true) {
             while (menuUsu() != 2) {
+                dal.salvar();
             }
             while (menuAdmin() != 10) {
+                dal.salvar();
             }
-            dal.salvar();
         }
     }
 
@@ -109,6 +108,7 @@ public class TelaPrincipal {
                 break;
             case 0:
                 System.out.println("DESLIGADO");
+                dal.salvar();
                 System.exit(0);
                 break;
         }
