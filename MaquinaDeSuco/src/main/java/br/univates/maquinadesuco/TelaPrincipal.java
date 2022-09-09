@@ -14,6 +14,7 @@ import br.univates.source.Entrada;
 public class TelaPrincipal {
     private MaquinaDeSuco maquina1;
     private DAL dal;
+
     public TelaPrincipal(MaquinaDeSuco maquina1, DAL dal) {
         this.maquina1 = maquina1;
         this.dal = dal;
