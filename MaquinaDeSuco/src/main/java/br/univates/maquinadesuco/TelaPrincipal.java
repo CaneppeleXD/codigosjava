@@ -64,54 +64,58 @@ public class TelaPrincipal {
                 "[10] TROCAR MODO\n" +
                 "[0] DESLIGAR";
         int comando = Entrada.leiaInt(menuAdmin);
-        switch (comando) {
-            case 1:
-                imprimirConsulta();
-                break;
-            case 2:
-                if (maquina1.colocarAgua(Entrada.leiaInt("Digite a quantidade de água")))
-                    System.out.println("Regarregado com Sucesso");
-                else
-                    System.out.println("Quantidade de Água maior do que a capacidade do Reservatório");
-                break;
-            case 3:
-                if (maquina1.tirarAgua(Entrada.leiaInt("Digite a quantidade de água")))
-                    System.out.println("Retirado com Sucesso");
-                else
-                    System.out.println("ERRO: A quantidade de Água no recipiente deve ser maior que ZERO");
-                break;
-            case 4:
-                if (maquina1.colocarEssencia(perguntarEssencia(),
-                        Entrada.leiaInt("Digite a quantidade")))
-                    System.out.println("Recarregado com Sucesso");
-                else
-                    System.out.println("Quantidade de Essência maior do que a capacidade do Reservatório");
-                break;
-            case 5:
-                if (maquina1.tirarEssencia(perguntarEssencia(),
-                        Entrada.leiaInt("Digite a quantidade")))
-                    System.out.println("Retirado com Sucesso");
-                else
-                    System.out.println("ERRO: A quantidade de Essência no recipiente deve ser maior que ZERO");
-                break;
-            case 6:
-                System.out.println("Saldo Total: " + maquina1.getTotalSaldo());
-                break;
-            case 7:
-                imprimirSaldos();
-                break;
-            case 8:
-                maquina1.setPreco(perguntarEssencia(), Entrada.leiaDouble("Digite o novo preço"));
-                System.out.println("Preço Trocado");
-                break;
-            case 9:
-                imprimirPrecos();
-                break;
-            case 0:
-                System.out.println("DESLIGADO");
-                dal.salvar();
-                System.exit(0);
-                break;
+        try {
+            switch (comando) {
+                case 1:
+                    imprimirConsulta();
+                    break;
+                case 2:
+                    if (maquina1.colocarAgua(Entrada.leiaInt("Digite a quantidade de água")))
+                        System.out.println("Regarregado com Sucesso");
+                    else
+                        System.out.println("Quantidade de Água maior do que a capacidade do Reservatório");
+                    break;
+                case 3:
+                    if (maquina1.tirarAgua(Entrada.leiaInt("Digite a quantidade de água")))
+                        System.out.println("Retirado com Sucesso");
+                    else
+                        System.out.println("ERRO: A quantidade de Água no recipiente deve ser maior que ZERO");
+                    break;
+                case 4:
+                    if (maquina1.colocarEssencia(perguntarEssencia(),
+                            Entrada.leiaInt("Digite a quantidade")))
+                        System.out.println("Recarregado com Sucesso");
+                    else
+                        System.out.println("Quantidade de Essência maior do que a capacidade do Reservatório");
+                    break;
+                case 5:
+                    if (maquina1.tirarEssencia(perguntarEssencia(),
+                            Entrada.leiaInt("Digite a quantidade")))
+                        System.out.println("Retirado com Sucesso");
+                    else
+                        System.out.println("ERRO: A quantidade de Essência no recipiente deve ser maior que ZERO");
+                    break;
+                case 6:
+                    System.out.println("Saldo Total: " + maquina1.getTotalSaldo());
+                    break;
+                case 7:
+                    imprimirSaldos();
+                    break;
+                case 8:
+                    maquina1.setPreco(perguntarEssencia(), Entrada.leiaDouble("Digite o novo preço"));
+                    System.out.println("Preço Trocado");
+                    break;
+                case 9:
+                    imprimirPrecos();
+                    break;
+                case 0:
+                    System.out.println("DESLIGADO");
+                    dal.salvar();
+                    System.exit(0);
+                    break;
+            }
+        } catch (Exception x) {
+            System.out.println(x);
         }
         return (comando);
     }
