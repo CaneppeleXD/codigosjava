@@ -4,19 +4,19 @@ import br.univates.source.Reservatorio;
 
 public class MaquinaDeSuco {
     private String[] sabores;
-    private int aguaSuco, essenciaSuco;
+    private int[] aguaSuco, essenciaSuco; 
     private Reservatorio[] reservatorios;
     private double[] precos, saldos;
     private int[] sucosServidos;
 
     public MaquinaDeSuco(String[] quantidadeDeEssencias) {
-        aguaSuco = 200;
-        essenciaSuco = 50;
         reservatorios = new Reservatorio[quantidadeDeEssencias.length + 1];
         precos = new double[quantidadeDeEssencias.length];
         sucosServidos = new int[quantidadeDeEssencias.length];
         sabores = new String[quantidadeDeEssencias.length];
         saldos = new double[quantidadeDeEssencias.length];
+        aguaSuco = new int[quantidadeDeEssencias.length];
+        essenciaSuco = new int[quantidadeDeEssencias.length];
         for (int i = 0; i < reservatorios.length; i++) {
             if (i == 0)
                 reservatorios[i] = new Reservatorio(20000);
@@ -24,6 +24,8 @@ public class MaquinaDeSuco {
                 reservatorios[i] = new Reservatorio(5000);
                 setPreco(i, 2.5);
                 setSabor(i, quantidadeDeEssencias[i - 1]);
+                setAguaNoSuco(i, 200);
+                setEssenciaNoSuco(i, 50);
             }
 
         }
@@ -41,26 +43,26 @@ public class MaquinaDeSuco {
         sabores[essencia - 1] = nome;
     }
 
-    public double getAguaNoSuco() {
-        return (aguaSuco);
+    public double getAguaNoSuco(int essencia) {
+        return (aguaSuco[essencia-1]);
     }
 
-    public boolean setAguaNoSuco(int quantia) {
+    public boolean setAguaNoSuco(int essencia, int quantia) {
         boolean retorno = quantia <= reservatorios[0].obterCapacidade();
         if (retorno) {
-            aguaSuco = quantia;
+            aguaSuco[essencia-1] = quantia;
         }
         return (retorno);
     }
 
-    public double getEssenciaNoSuco() {
-        return (essenciaSuco);
+    public double getEssenciaNoSuco(int essencia) {
+        return (essenciaSuco[essencia-1]);
     }
 
-    public boolean setEssenciaNoSuco(int quantia) {
-        boolean retorno = quantia <= reservatorios[reservatorios.length - 1].obterCapacidade();
+    public boolean setEssenciaNoSuco(int essencia, int quantia) {
+        boolean retorno = quantia <= reservatorios[essencia-1].obterCapacidade();
         if (retorno) {
-            essenciaSuco = quantia;
+            essenciaSuco[essencia-1] = quantia;
         }
         return (retorno);
     }
@@ -94,11 +96,11 @@ public class MaquinaDeSuco {
     }
 
     public boolean servirSuco(int essencia) {
-        boolean retorno = reservatorios[0].obterConteudo() >= aguaSuco
-                && reservatorios[essencia].obterConteudo() >= essenciaSuco;
+        boolean retorno = reservatorios[0].obterConteudo() >= aguaSuco[essencia-1]
+                && reservatorios[essencia].obterConteudo() >= essenciaSuco[essencia-1];
         if (retorno) {
-            tirarAgua(aguaSuco);
-            tirarEssencia(essencia, essenciaSuco);
+            tirarAgua(aguaSuco[essencia-1]);
+            tirarEssencia(essencia, essenciaSuco[essencia-1]);
             sucosServidos[essencia - 1]++;
             saldos[essencia - 1] += precos[essencia - 1];
         }

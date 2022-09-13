@@ -25,7 +25,7 @@ public class TelaPrincipal {
             while (menuUsu() != 2) {
                 dal.salvar();
             }
-            while (menuAdmin() != 10) {
+            while (menuAdmin() != 13) {
                 dal.salvar();
             }
         }
@@ -60,8 +60,11 @@ public class TelaPrincipal {
                 "[6] SALDO TOTAL\n" +
                 "[7] SALDO POR ESSÊNCIA\n" +
                 "[8] TROCAR PREÇOS\n" +
-                "[9] VERIFICAR PREÇOS\n\n" +
-                "[10] TROCAR MODO\n" +
+                "[9] VERIFICAR PREÇOS\n" +
+                "[10] MUDAR QUANT. ÁGUA NO SUCO\n" +
+                "[11] MUDAR QUANT. ESSÊNCIA NO SUCO\n" +
+                "[12] VIZUALIZAR RECEITAS\n\n"+
+                "[13] TROCAR MODO\n" +
                 "[0] DESLIGAR";
         int comando = Entrada.leiaInt(menuAdmin);
         try {
@@ -108,6 +111,17 @@ public class TelaPrincipal {
                 case 9:
                     imprimirPrecos();
                     break;
+                case 10:
+                    maquina1.setAguaNoSuco(perguntarEssencia(), Entrada.leiaInt("Digite a nova quantidade"));
+                    System.out.println("Quantidade trocada");
+                    break;
+                case 11:
+                    maquina1.setEssenciaNoSuco(perguntarEssencia(), Entrada.leiaInt("Digite a nova quantidade"));
+                    System.out.println("Quantidade Trocada");
+                    break;
+                case 12:
+                    imprimirReceita();
+                    break;
                 case 0:
                     System.out.println("DESLIGADO");
                     dal.salvar();
@@ -153,5 +167,13 @@ public class TelaPrincipal {
             impressao += "\nPreço suco de " + maquina1.getSabor(i) + ": R$" + maquina1.getPreco(i);
         }
         System.out.println(impressao);
+    }
+
+    public void imprimirReceita(){
+        String receita = "\nRECEITAS\n";
+        for (int i = 1; i <= maquina1.getQuantidadeDeEssencias(); i++) {
+            receita += maquina1.getSabor(i)+":\n"+maquina1.getAguaNoSuco(i)+"ml de água\n"+maquina1.getEssenciaNoSuco(i)+"ml de essência\n";
+        }
+        System.out.println(receita);
     }
 }

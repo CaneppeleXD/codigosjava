@@ -17,8 +17,8 @@ public class DAL {
 
         if (retorno = repo.abrirEscrita()) {
             repo.escreverLinha(formatarSabores());
-            repo.escreverLinha(m.getAguaNoSuco() + "");
-            repo.escreverLinha(m.getEssenciaNoSuco() + "");
+            repo.escreverLinha(formatarAguaNoSuco());
+            repo.escreverLinha(formatarEssenciaNoSuco());
             repo.escreverLinha(formatarReservatorio());
             repo.escreverLinha(formatarPreco());
             repo.escreverLinha(formatarSaldo());
@@ -32,8 +32,8 @@ public class DAL {
     public MaquinaDeSuco recuperar() {
         if (repo.abrirLeitura()) {
             recuperarSabores();
-            m.setAguaNoSuco((int) Math.round(Double.parseDouble(repo.lerLinha())));
-            m.setEssenciaNoSuco((int) Math.round(Double.parseDouble(repo.lerLinha())));
+            recuperarAguaNoSuco();
+            recuperarEssenciaNoSuco();
             recuperarReservatorios();
             recuperarPrecos();
             recuperarSaldos();
@@ -41,6 +41,22 @@ public class DAL {
             repo.fecharArquivo();
         }
         return m;
+    }
+
+    private void recuperarAguaNoSuco() {
+        String linha = repo.lerLinha();
+        for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
+            m.setAguaNoSuco(i, (int)Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
+            linha = linha.substring(linha.indexOf(";") + 1);
+        }
+    }
+
+    private void recuperarEssenciaNoSuco() {
+        String linha = repo.lerLinha();
+        for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
+            m.setEssenciaNoSuco(i, (int)Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
+            linha = linha.substring(linha.indexOf(";") + 1);
+        }
     }
 
     private void recuperarSucosServidos() {
@@ -137,4 +153,20 @@ public class DAL {
         return (linha);
     }
 
+
+    private String formatarAguaNoSuco() {
+        String linha = "";
+        for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
+            linha += m.getAguaNoSuco(i) + ";";
+        }
+        return (linha);
+    }
+
+    private String formatarEssenciaNoSuco() {
+        String linha = "";
+        for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
+            linha += m.getEssenciaNoSuco(i) + ";";
+        }
+        return (linha);
+    }
 }

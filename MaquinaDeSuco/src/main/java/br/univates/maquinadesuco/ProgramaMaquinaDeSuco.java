@@ -7,7 +7,7 @@ public class ProgramaMaquinaDeSuco {
         DAL dal = new DAL(
                 "/home/flexabus-java-3/pasta do jao/javaas/MaquinaDeSuco/src/main/java/br/univates/maquinadesuco/maquinadesuco.txt",
                 m1);
-        m1 = dal.recuperar();
+        try{m1 = dal.recuperar();}catch(Exception x){System.out.println("Erro ao recuperar máquina --->"+x);dal.repo.fecharArquivo();}
         TelaPrincipal t = new TelaPrincipal(m1, dal);
         t.exibir();
     }
