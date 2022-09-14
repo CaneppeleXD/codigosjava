@@ -136,7 +136,7 @@ public class MaquinaDeSuco {
     }
 
     public double getTotalSaldo() {
-        int total = 0;
+        double total = 0;
         for (int i = 0; i < saldos.length; i++) {
             total += getSaldo(i + 1);
         }
@@ -151,7 +151,6 @@ public class MaquinaDeSuco {
         this.sucosServidos[essencia - 1] = sucosServidos;
     }
 
-    // adaptar a classe telaprincipal à nova classe maquinadesuco
     /*
      * public void adicionarEssencia(){
      * essencias = Arrays.copyOf(essencias, essencias.length+1);
