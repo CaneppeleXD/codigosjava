@@ -12,9 +12,6 @@ public class MaquinaDeSuco {
         for (int i = 0; i < sabores.length; i++) {
             essencias[i] = new Essencia(5000, sabores[i]);
         }
-
-    }
-
     }
 
     public int getCapacidade(int reservatorio) {
@@ -77,59 +74,59 @@ public class MaquinaDeSuco {
     }
 
     public boolean servirSuco(int essencia) {
-        boolean retorno = reservatorios[0].obterConteudo() >= aguaSuco[essencia - 1]
-                && reservatorios[essencia].obterConteudo() >= essenciaSuco[essencia - 1];
+        boolean retorno = reservatorioAgua.obterConteudo() >= essencias[essencia-1].getAguaSuco()
+                && essencias[essencia-1].obterConteudo() >= essencias[essencia-1].getEssenciaSuco();
         if (retorno) {
-            tirarAgua(aguaSuco[essencia - 1]);
-            tirarEssencia(essencia, essenciaSuco[essencia - 1]);
-            sucosServidos[essencia - 1]++;
-            saldos[essencia - 1] += precos[essencia - 1];
+            tirarAgua(essencias[essencia-1].getAguaSuco());
+            tirarEssencia(essencia, essencias[essencia-1].getEssenciaSuco());
+            setSucosServidos(essencia, essencias[essencia-1].getSucosServidos()+1);
+            setSaldo(essencia, essencias[essencia-1].getSaldo()+essencias[essencia-1].getPreco());
         }
         return (retorno);
     }
 
     public int getQuantidadeDeEssencias() {
-        return (reservatorios.length - 1);
+        return (essencias.length);
     }
 
     public int getTotalSucosServidos() {
         int total = 0;
-        for (int i = 0; i < sucosServidos.length; i++) {
-            total += sucosServidos[i];
+        for (int i = 0; i < essencias.length; i++) {
+            total += essencias[i].getSucosServidos();
         }
         return (total);
     }
 
     public int getSucosServidos(int essencia) {
-        return (sucosServidos[essencia - 1]);
+        return (essencias[essencia-1].getSucosServidos());
     }
 
     public void setPreco(int essencia, double preco) {
-        precos[essencia - 1] = preco;
+        essencias[essencia-1].setPreco(preco);;
     }
 
     public double getPreco(int essencia) {
-        return (precos[essencia - 1]);
+        return (essencias[essencia-1].getPreco());
     }
 
     public double getSaldo(int essencia) {
-        return (saldos[essencia - 1]);
+        return (essencias[essencia-1].getSaldo());
     }
 
     public double getTotalSaldo() {
         double total = 0;
-        for (int i = 0; i < saldos.length; i++) {
-            total += getSaldo(i + 1);
+        for (int i = 0; i < essencias.length; i++) {
+            total += essencias[i].getSaldo();
         }
         return (total);
     }
 
     public void setSaldo(int essencia, double saldo) {
-        saldos[essencia - 1] = saldo;
+        essencias[essencia-1].setSaldo(saldo);
     }
 
     public void setSucosServidos(int essencia, int sucosServidos) {
-        this.sucosServidos[essencia - 1] = sucosServidos;
+        essencias[essencia-1].setSucosServidos(sucosServidos);
     }
 
     /*
