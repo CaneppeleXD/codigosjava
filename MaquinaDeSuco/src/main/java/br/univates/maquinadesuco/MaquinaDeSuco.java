@@ -3,104 +3,85 @@ package br.univates.maquinadesuco;
 import br.univates.source.Reservatorio;
 
 public class MaquinaDeSuco {
-    private String[] sabores;
-    private int[] aguaSuco, essenciaSuco; 
-    private Reservatorio[] reservatorios;
-    private double[] precos, saldos;
-    private int[] sucosServidos;
+    private Reservatorio reservatorioAgua;
+    private Essencia[] essencias;
 
-    public MaquinaDeSuco(String[] quantidadeDeEssencias) {
-        reservatorios = new Reservatorio[quantidadeDeEssencias.length + 1];
-        precos = new double[quantidadeDeEssencias.length];
-        sucosServidos = new int[quantidadeDeEssencias.length];
-        sabores = new String[quantidadeDeEssencias.length];
-        saldos = new double[quantidadeDeEssencias.length];
-        aguaSuco = new int[quantidadeDeEssencias.length];
-        essenciaSuco = new int[quantidadeDeEssencias.length];
-        for (int i = 0; i < reservatorios.length; i++) {
-            if (i == 0)
-                reservatorios[i] = new Reservatorio(20000);
-            else {
-                reservatorios[i] = new Reservatorio(5000);
-                setPreco(i, 2.5);
-                setSabor(i, quantidadeDeEssencias[i - 1]);
-                setAguaNoSuco(i, 200);
-                setEssenciaNoSuco(i, 50);
-            }
-
+    public MaquinaDeSuco(String[] sabores) {
+        reservatorioAgua = new Reservatorio(20000);
+        essencias = new Essencia[sabores.length];
+        for (int i = 0; i < sabores.length; i++) {
+            essencias[i] = new Essencia(5000, sabores[i]);
         }
+
+    }
+
     }
 
     public int getCapacidade(int reservatorio) {
-        return (reservatorios[reservatorio].obterCapacidade());
+        int retorno = 0;
+        if(reservatorio == 0){retorno=reservatorioAgua.obterCapacidade();}
+        else{retorno=essencias[reservatorio-1].obterCapacidade();}
+        return retorno;
     }
 
     public String getSabor(int essencia) {
-        return sabores[essencia - 1];
+        return essencias[essencia-1].getSabor();
     }
 
     public void setSabor(int essencia, String nome) {
-        sabores[essencia - 1] = nome;
+        essencias[essencia-1].setSabor(nome);
     }
 
     public double getAguaNoSuco(int essencia) {
-        return (aguaSuco[essencia-1]);
+        return (essencias[essencia-1].getAguaSuco());
     }
 
-    public boolean setAguaNoSuco(int essencia, int quantia) {
-        boolean retorno = quantia <= reservatorios[0].obterCapacidade();
-        if (retorno) {
-            aguaSuco[essencia-1] = quantia;
-        }
-        return (retorno);
+    public void setAguaNoSuco(int essencia, int quantia) {
+        essencias[essencia-1].setAguaSuco(quantia);
     }
 
     public double getEssenciaNoSuco(int essencia) {
-        return (essenciaSuco[essencia-1]);
+        return (essencias[essencia-1].getEssenciaSuco());
     }
 
-    public boolean setEssenciaNoSuco(int essencia, int quantia) {
-        boolean retorno = quantia <= reservatorios[essencia-1].obterCapacidade();
-        if (retorno) {
-            essenciaSuco[essencia-1] = quantia;
-        }
-        return (retorno);
+    public void setEssenciaNoSuco(int essencia, int quantia) {
+        essencias[essencia-1].setEssenciaSuco(quantia);
     }
 
     public double getQuantidadeAgua() {
-        return (reservatorios[0].obterConteudo());
+        return (reservatorioAgua.obterConteudo());
     }
 
     public boolean colocarAgua(int agua) {
-        return (reservatorios[0].adicionar(agua));
+        return (reservatorioAgua.adicionar(agua));
     }
 
     public boolean tirarAgua(int agua) {
-        return (reservatorios[0].retirar(agua));
+        return (reservatorioAgua.retirar(agua));
     }
 
     public boolean setcapacidadeAgua(int capacidadeAgua) {
-        return (reservatorios[0].setCapacidade(capacidadeAgua));
+        return (reservatorioAgua.setCapacidade(capacidadeAgua));
     }
 
     public double getQuantidadeEssencia(int essencia) {
-        return (reservatorios[essencia].obterConteudo());
+        return (essencias[essencia-1].obterConteudo());
     }
 
     public boolean colocarEssencia(int essencia, int quantidade) {
-        return (reservatorios[essencia].adicionar(quantidade));
+        return (essencias[essencia-1].adicionar(quantidade));
     }
 
     public boolean tirarEssencia(int essencia, int quantidade) {
-        return (reservatorios[essencia].retirar(quantidade));
+        return (essencias[essencia-1].retirar(quantidade));
     }
 
     public boolean servirSuco(int essencia) {
-        boolean retorno = reservatorios[0].obterConteudo() >= aguaSuco[essencia-1]
-                && reservatorios[essencia].obterConteudo() >= essenciaSuco[essencia-1];
+        boolean retorno = reservatorios[0].obterConteudo() >= aguaSuco[essencia - 1]
+                && reservatorios[essencia].obterConteudo() >= essenciaSuco[essencia - 1];
         if (retorno) {
-            tirarAgua(aguaSuco[essencia-1]);
-            tirarEssencia(essencia, essenciaSuco[essencia-1]);
+            tirarAgua(aguaSuco[essencia - 1]);
+            tirarEssencia(essencia, essenciaSuco[essencia - 1]);
             sucosServidos[essencia - 1]++;
             saldos[essencia - 1] += precos[essencia - 1];
         }
