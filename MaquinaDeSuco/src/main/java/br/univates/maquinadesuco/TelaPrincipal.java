@@ -23,10 +23,10 @@ public class TelaPrincipal {
     public void exibir() {
         while (true) {
             while (menuUsu() != 2) {
-                dal.salvar();
+                dal.salvar(maquina1);
             }
             while (menuAdmin() != 13) {
-                dal.salvar();
+                dal.salvar(maquina1);
             }
         }
     }
@@ -124,7 +124,7 @@ public class TelaPrincipal {
                     break;
                 case 0:
                     System.out.println("DESLIGADO");
-                    dal.salvar();
+                    dal.salvar(maquina1);
                     System.exit(0);
                     break;
             }
