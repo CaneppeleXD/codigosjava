@@ -63,7 +63,7 @@ public class TelaPrincipal {
                 "[9] VERIFICAR PREÇOS\n" +
                 "[10] MUDAR QUANT. ÁGUA NO SUCO\n" +
                 "[11] MUDAR QUANT. ESSÊNCIA NO SUCO\n" +
-                "[12] VIZUALIZAR RECEITAS\n\n"+
+                "[12] VIZUALIZAR RECEITAS\n\n" +
                 "[13] TROCAR MODO\n" +
                 "[0] DESLIGAR";
         int comando = Entrada.leiaInt(menuAdmin);
@@ -169,10 +169,11 @@ public class TelaPrincipal {
         System.out.println(impressao);
     }
 
-    public void imprimirReceita(){
+    public void imprimirReceita() {
         String receita = "\nRECEITAS\n";
         for (int i = 1; i <= maquina1.getQuantidadeDeEssencias(); i++) {
-            receita += maquina1.getSabor(i)+":\n"+maquina1.getAguaNoSuco(i)+"ml de água\n"+maquina1.getEssenciaNoSuco(i)+"ml de essência\n";
+            receita += maquina1.getSabor(i) + ":\n" + maquina1.getAguaNoSuco(i) + "ml de água\n"
+                    + maquina1.getEssenciaNoSuco(i) + "ml de essência\n";
         }
         System.out.println(receita);
     }

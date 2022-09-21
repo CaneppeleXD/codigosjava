@@ -46,7 +46,7 @@ public class DAL {
     private void recuperarAguaNoSuco(MaquinaDeSuco m) {
         String linha = repo.lerLinha();
         for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
-            m.setAguaNoSuco(i, (int)Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
+            m.setAguaNoSuco(i, (int) Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
             linha = linha.substring(linha.indexOf(";") + 1);
         }
     }
@@ -54,7 +54,7 @@ public class DAL {
     private void recuperarEssenciaNoSuco(MaquinaDeSuco m) {
         String linha = repo.lerLinha();
         for (int i = 1; i <= m.getQuantidadeDeEssencias(); i++) {
-            m.setEssenciaNoSuco(i, (int)Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
+            m.setEssenciaNoSuco(i, (int) Math.round(Double.parseDouble(linha.substring(0, linha.indexOf(";")))));
             linha = linha.substring(linha.indexOf(";") + 1);
         }
     }
@@ -152,7 +152,6 @@ public class DAL {
         }
         return (linha);
     }
-
 
     private String formatarAguaNoSuco(MaquinaDeSuco m) {
         String linha = "";

@@ -2,19 +2,19 @@ package br.univates.maquinadesuco;
 
 import br.univates.source.Reservatorio;
 
-public class Essencia extends Reservatorio{
+public class Essencia extends Reservatorio {
     private String sabor;
     private double preco, saldo;
     private int aguaSuco, essenciaSuco, sucosServidos;
 
-    public Essencia(int capacidade, String sabor){
+    public Essencia(int capacidade, String sabor) {
         super(capacidade);
-        this.sabor=sabor;
-        aguaSuco=200;
-        essenciaSuco=50;
-        sucosServidos=0;
-        preco=2.5;
-        saldo=0;
+        this.sabor = sabor;
+        aguaSuco = 200;
+        essenciaSuco = 50;
+        sucosServidos = 0;
+        preco = 2.5;
+        saldo = 0;
     }
 
     public int getAguaSuco() {
@@ -32,7 +32,7 @@ public class Essencia extends Reservatorio{
     public void setSabor(String sabor) {
         this.sabor = sabor;
     }
-    
+
     public int getSucosServidos() {
         return sucosServidos;
     }
