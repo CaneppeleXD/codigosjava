@@ -15,9 +15,8 @@ public class ProgramaData {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dado d = new Dado();
-        d.girarDado(5);
-        System.out.println(d.getHistorico());
+        Data d = new Data(17,11,2022);
+        System.out.println(d.getFaseDaLua());
     }
 
 }
