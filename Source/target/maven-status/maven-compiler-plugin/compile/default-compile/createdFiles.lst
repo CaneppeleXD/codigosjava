@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 br/univates/source/Dado.class
 br/univates/source/Triangulo.class
 br/univates/source/ProgramaLancarDados.class
@@ -9,6 +10,14 @@ br/univates/source/Reservatorio.class
 br/univates/source/report/Coffee_2.jrxml
 br/univates/source/nomes.txt
 br/univates/source/report/coffee.jpg
+=======
+br/univates/source/Dado.class
+br/univates/source/Triangulo.class
+br/univates/source/ProgramaLancarDados.class
+br/univates/source/ProgramaData.class
+br/univates/source/Data.class
+br/univates/source/Reservatorio.class
+>>>>>>> d157cd13fd9108c8156f1c04d15e0fb2e1aece71
 br/univates/source/Arquivo.class
 br/univates/source/newClass.class
 br/univates/source/NumeroInteiro.class
@@ -18,6 +27,7 @@ br/univates/source/RequestPostJsonTest.class
 br/univates/source/ProgramaTerrenosTriangulares.class
 br/univates/source/ProgramaLeFormataNome.class
 br/univates/source/VetorInteiro.class
+<<<<<<< HEAD
 br/univates/source/report/Coffee_2_descriptor.properties
 br/univates/source/testeArgs.class
 br/univates/source/ProgramaTesteJasper.class
@@ -29,3 +39,7 @@ br\univates\source\VetorInteiro.class
 br\univates\source\NumeroInteiro.class
 br\univates\source\Data.class
 >>>>>>> parent of d157cd1 (asas)
+=======
+br/univates/source/ProgramaTesteJasper.class
+br/univates/source/NomeProprio.class
+>>>>>>> d157cd13fd9108c8156f1c04d15e0fb2e1aece71
