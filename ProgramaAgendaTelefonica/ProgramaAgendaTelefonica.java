@@ -31,7 +31,7 @@ public class ProgramaAgendaTelefonica {
           }
      }
 
-     public static String[][] incluir(String[][] memoria) {
+     public static String[][ incluir(String[][] memoria) {
           int tamanho = 0;
           for (int linha = 0; linha < memoria.length; linha++) {
                tamanho++;

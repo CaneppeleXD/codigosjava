@@ -3,7 +3,7 @@ public class App {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Digite quanto números deseja sortear");
-        int[][] m = new int[10000][s.nextInt()];
+        int[][] m = new int[10][s.nextInt()];
         for (int i = 0; i < m.length; i++) {
             List<Integer> l = sortear(m[i].length);
             m[i] = toArray(l);
@@ -16,7 +16,7 @@ public class App {
         List<Integer> l = new ArrayList<Integer>();
         for (int i = 0; i < quantidade; i++) {
             int n;
-            while(l.contains(n = (int)Math.round(Math.random()*100))) {}
+            while(l.contains(n = (int)Math.round(Math.random()*60))) {}
             l.add(n);
         }
         return l;
@@ -48,9 +48,10 @@ public class App {
         List<Integer> l = new ArrayList<Integer>();
         for (int i = 0; i < m[0].length; i++) {
             int n = m[(int)Math.round(Math.random()*(m.length-1))][(int)Math.round(Math.random()*(m[0].length-1))];
-            while(l.contains(l)){n = m[(int)Math.round(Math.random()*m.length)][(int)Math.round(Math.random()*m[0].length)];}
+            while(l.contains(n)){n = m[(int)Math.round(Math.random()*(m.length-1))][(int)Math.round(Math.random()*(m[0].length-1))];}
             l.add(n);
         }
+	Collections.sort(l);
         return l;
     }
 }
